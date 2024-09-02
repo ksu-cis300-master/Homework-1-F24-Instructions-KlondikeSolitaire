@@ -1,0 +1,608 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>index</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='homework-assignment-1-klondike-solitaire'><span>Homework Assignment 1: Klondike Solitaire</span></h1><p><span>For this assignment, you will complete an implementation of the Klondike Solitaire game.</span></p><h2 id='0-contents'><span>0. Contents</span></h2><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" href="#homework-assignment-1-klondike-solitaire">Homework Assignment 1: Klondike Solitaire</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n3"><a class="md-toc-inner" href="#0-contents">0. Contents</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n5"><a class="md-toc-inner" href="#1-user-requirements">1. User Requirements</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n12"><a class="md-toc-inner" href="#2-cards">2. Cards</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n24"><a class="md-toc-inner" href="#21-examples">2.1. Examples</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n34"><a class="md-toc-inner" href="#3-rules">3. Rules</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n66"><a class="md-toc-inner" href="#4-starting-the-assignment">4. Starting the Assignment</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n75"><a class="md-toc-inner" href="#5-user-interface">5. User Interface</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n94"><a class="md-toc-inner" href="#6-software-architecture">6. Software Architecture</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n115"><a class="md-toc-inner" href="#61-the-suit-enumeration">6.1. The Suit Enumeration</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n126"><a class="md-toc-inner" href="#62-the-card-class">6.2. The Card Class</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n135"><a class="md-toc-inner" href="#63-the-cardpile-class">6.3. The CardPile Class</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n137"><a class="md-toc-inner" href="#64-the-discardpile-class">6.4. The DiscardPile Class</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n144"><a class="md-toc-inner" href="#65-the-tableaucolumn-class">6.5. The TableauColumn Class</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n153"><a class="md-toc-inner" href="#7-coding-requirements">7. Coding Requirements</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n501"><a class="md-toc-inner" href="#71-the-tableauqueue-class">7.1. The TableauQueue Class</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n503"><a class="md-toc-inner" href="#72-the-game-class">7.2. The Game Class</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n163"><a class="md-toc-inner" href="#721-low-level-methods">7.2.1. Low-Level Methods</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n512"><a class="md-toc-inner" href="#7211-a-private-method-to-transfer-one-card-from-a-stack-to-a-tableauqueue">7.2.1.1. A private method to transfer one card from a stack to a TableauQueue</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n515"><a class="md-toc-inner" href="#7212-a-private-method-to-transfer-one-card-from-a-tableauqueue-to-a-stack">7.2.1.2. A private method to transfer one card from a TableauQueue to a stack</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n518"><a class="md-toc-inner" href="#7213-a-private-method-to-transfer-cards-from-one-stack-to-another">7.2.1.3. A private method to transfer cards from one stack to another</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n526"><a class="md-toc-inner" href="#7214-a-private-method-to-transfer-cards-from-one-tableauqueue-to-another">7.2.1.4. A private method to transfer cards from one TableauQueue to another</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n176"><a class="md-toc-inner" href="#7215-a-private-method-to-remove-any-selection">7.2.1.5. A private method to remove any selection</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n178"><a class="md-toc-inner" href="#7216-a-private-method-to-determine-whether-a-card-can-be-placed-on-a-tableau-column">7.2.1.6. A private method to determine whether a card can be placed on a tableau column</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n180"><a class="md-toc-inner" href="#7217-a-private-method-to-determine-whether-a-card-can-be-placed-on-a-foundation-pile">7.2.1.7. A private method to determine whether a card can be placed on a foundation pile</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n182"><a class="md-toc-inner" href="#7218-a-private-method-to-determine-whether-the-game-has-been-won">7.2.1.8. A private method to determine whether the game has been won</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n184"><a class="md-toc-inner" href="#7219-a-private-method-to-flip-a-tableau-column-card">7.2.1.9. A private method to flip a tableau column card</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n186"><a class="md-toc-inner" href="#722-methods-to-make-game-moves">7.2.2. Methods to Make Game Moves</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n188"><a class="md-toc-inner" href="#7221-a-private-method-to-deal-the-cards">7.2.2.1. A private method to deal the cards</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n196"><a class="md-toc-inner" href="#7222-a-private-method-to-move-a-card-from-the-discard-pile-to-a-tableau-column">7.2.2.2. A private method to move a card from the discard pile to a tableau column</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n198"><a class="md-toc-inner" href="#7223-a-private-method-to-move-a-card-from-the-discard-pile-to-a-foundation-pile">7.2.2.3. A private method to move a card from the discard pile to a foundation pile</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n200"><a class="md-toc-inner" href="#7224-a-private-method-to-move-the-selected-cards-from-one-tableau-column-to-another">7.2.2.4. A private method to move the selected cards from one tableau column to another</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n203"><a class="md-toc-inner" href="#7225-a-private-method-to-move-a-card-from-a-tableau-column-to-a-foundation-pile">7.2.2.5. A private method to move a card from a tableau column to a foundation pile</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n205"><a class="md-toc-inner" href="#723-public-constructor-and-methods">7.2.3. Public Constructor and Methods</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n207"><a class="md-toc-inner" href="#7231-the-constructor">7.2.3.1. The constructor</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n216"><a class="md-toc-inner" href="#7232-the-drawcardsfromstock-method">7.2.3.2. The DrawCardsFromStock method</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n218"><a class="md-toc-inner" href="#7233-the-selectdiscard-method">7.2.3.3. The SelectDiscard method</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n220"><a class="md-toc-inner" href="#7234-the-selecttableaucards-method">7.2.3.4. The SelectTableauCards method</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n222"><a class="md-toc-inner" href="#7235-the-selectfoundationpile-method">7.2.3.5. The SelectFoundationPile method</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n224"><a class="md-toc-inner" href="#8-testing-your-program">8. Testing Your Program</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n233"><a class="md-toc-inner" href="#9-submitting-your-assignment">9. Submitting Your Assignment</a></span></p></div><h2 id='1-user-requirements'><span>1. User Requirements</span></h2><p><span>A company wants to distribute an implementation of the game, Klondike Solitaire. A portion of the program has already been written, but you will need to supply the game logic. Your implementation should include the following features:</span></p><ul><li><span>Verification that the player&#39;s moves are legal (see below).</span></li><li><span>Notification of the end of the game.</span></li></ul><h2 id='2-cards'><span>2. Cards</span></h2><p><span>Klondike is a Solitaire game played with a standard deck of 52 cards. Each card in this is uniquely identified by its </span><em><span>rank</span></em><span>, an integer value from 1 to 13, and a </span><em><span>suit</span></em><span>, either &quot;spades&quot;, &quot;clubs&quot;, &quot;hearts&quot;, or &quot;diamonds&quot;. Cards with ranks 2 through 10 have that value, along with their suit, in the upper-left and lower-right corners. The other four ranks have special names, the first letter of which is shown in the upper-left and lower-right corners, along with their suit. These names are:</span></p><ul><li><span>Rank 1: &quot;Ace&quot;</span></li><li><span>Rank 11: &quot;Jack&quot;</span></li><li><span>Rank 12: &quot;Queen&quot;</span></li><li><span>Rank 13: &quot;King&quot;</span></li></ul><p><span>The suits spades and clubs are black, and the suits hearts and diamonds are red.</span></p><h3 id='21-examples'><span>2.1. Examples</span></h3><ul><li><span>Ace of spades:</span>
+<img src="spades_1.png" alt="The ace of spades" style="zoom:33%;" /></li><li><span>King of clubs:</span>
+<img src="clubs_13.png" alt="The king of clubs" style="zoom:33%;" /></li><li><span>Queen of hearts:</span>
+<img src="hearts_12.png" alt="The queen of hearts" style="zoom:33%;" /></li><li><span>2 of diamonds:</span>
+<img src="diamonds_2.png" alt="The 2 of diamonds" style="zoom:33%;" /></li></ul><h2 id='3-rules'><span>3. Rules</span></h2><p><span>The cards are initially dealt into seven </span><em><span>tableau columns</span></em><span> by repeating the following until all tableau columns contain a face-up card:</span></p><ul><li><span>Place the next card from the deck face up on top of the the leftmost tableau column that does not contain a face-up card.</span></li><li><span>Place one card from the deck face down on each remaining tableau column that does not contain a face-up card, starting from the left.</span></li></ul><p><span>The remaining 24 cards in the deck form the </span><em><span>stock</span></em><span>. For example, the following figure illustrates how the cards might be dealt, where the stock is in the upper-left corner and the seven tableau columns are across the bottom:</span></p><p><img src="deal-example.png" alt="An initial deal." style="zoom:67%;" /></p><p><span>Note that the first tableau column has no face-down cards, and each successive column has one more face-down card than the one to its left.</span></p><p><span>The goal of the game is to move all of the cards to the four </span><em><span>foundations</span></em><span>, which are shown as empty boxes in the upper-right of the above figure, by repeatedly doing any of the following:</span></p><ul><li><strong><span>Take cards from stock:</span></strong><span> If cards remain in the stock, draw three cards from the top and place them face up on the </span><em><span>discard pile</span></em><span> next to the stock. If the stock contains fewer than three cards, place all of them on the discard pile. When doing this, the order of the cards should be reversed; for example, the following figure shows the result of this action if the 3 of clubs had been the top card on the stock, the 2 of diamonds had been next, and the 6 of diamonds had been next:</span>
+<img src="stock-flip-example.png" alt="Result of taking cards from stock" style="zoom:67%;" /></li><li><strong><span>Move a card from the discard pile to a nonempty tableau column:</span></strong><span> The top card from the discard pile may be moved on top of a nonempty tableau column if its rank is one less than the rank of the top card on the tableau column and its color is different. In the above example, we can move the 6 of diamonds on top of the 7 of spades:</span>
+<img src="move-from-discard-example.png" alt="Move a card from the discard pile to a nonempty tableau column." style="zoom:67%;" /></li><li><strong><span>Move a card to a foundation:</span></strong><span> Any ace may be moved from the top of a tableau column or the discard pile to an empty foundation. Any other card may be moved from the top of a tableau column or the discard pile to a nonempty foundation if it has the same suit as the card on the top of the foundation and has a rank one larger. If the card being moved is the only face-up card on a tableau column and there are face-down cards on that column, the top face-down card is turned face up. For example, all three aces above may be moved to empty foundations, and the 2 of diamonds may then be moved on top of the ace of diamonds:</span>
+<img src="move-to-foundation-example.png" alt="Move cards to foundations." style="zoom:67%;" /></li><li><strong><span>Move cards from one tableau column to a nonempty tableau column:</span></strong><span> One or more face-up cards from the top of a tableau column may be moved on top of a nonempty tableau column if the bottom card being moved has rank one smaller than the card upon which it is being placed, and these two cards are of different colors. If all of the face-up cards from a tableau column are moved and there are face-down cards on this column, the top face-down card is turned face up. In the above example, the queen of hearts may be moved on top of the king of clubs:</span>
+<img src="move-tableau-column-example.png" alt="Moving from a tableau column." style="zoom:67%;" /></li><li><strong><span>Move cards to an empty tableau column:</span></strong><span> The top card from the discard pile or all of the face-up cards on a tableau column may be moved to an empty tableau column if the bottom card being moved is a king. If cards are moved from a tableau column containing face-down cards, the top face-down card is turned face up. In the above example, the king of clubs and queen of hearts may be moved to the empty tableau column:</span>
+<img src="move-to-empty-tableau.png" alt="Moving cards to an empty tableau column." style="zoom:67%;" /></li><li><strong><span>Return the discard pile to stock:</span></strong><span> If the stock is empty and the discard pile is not, the discard pile may be turned face down and returned to stock. In the example below (in which the discard pile contains more cards below the three that are showing), the 3 of diamonds will become the bottom card of the stock:</span>
+<img src="return-cards-to-stock.png" alt="Return the discard pile to stock." style="zoom:67%;" /></li></ul><p><span>Suppose that at some point, the following conditions both hold:</span></p><ul><li><span>At most one card remains in the stock and discard piles combined.</span></li><li><span>No face-down cards remain in any tableau column.</span></li></ul><p><span>In such a situation, it is always possible to reach the goal of moving all cards to the foundations. Therefore, in order to skip the tedium of moving the remaining cards to foundations, we will consider that the player has won if both of the above conditions hold.</span></p><p><span>Play continues until the player either wins or gives up. A more detailed example is given in the </span><a href=''><span>demo video</span></a><span>.</span></p><h2 id='4-starting-the-assignment'><span>4. Starting the Assignment</span></h2><p><span>Create your GitHub repository using the link provided on the Canvas assignment. This repository contains a running program, but with little functionality. It also contains a unit test project.</span></p><p><span>The design window for </span><strong><span>UserInterface.cs</span></strong><span> should contain a form that looks like:</span></p><p><img src="design-window.png" alt="The design window." style="zoom:67%;" /></p><p><span>You will </span><strong><span>not</span></strong><span> need to change this. Additional graphics are added by the provided code. If you run the program, you should see the following GUI (don&#39;t worry if the boxes don&#39;t line up vertically on your display):</span></p><p><img src="initial-gui.png" alt="The initial GUI." style="zoom:67%;" /></p><p><span>The only functionality this program will have is that clicking the &quot;Seed:&quot; button will cause the following modal dialog to be displayed:</span></p><p><img src="seed-dialog.png" alt="The dialog for obtaining a new seed." style="zoom:67%;" /></p><p><span>The </span><strong><span>NumericUpDown</span></strong><span> in this dialog can be set to any integer value </span><em><span>n</span></em><span>, where -1 </span>&leq;<span> </span><em><span>n</span></em><span> </span>&leq;<span> 1,000,000. If the dialog is closed by clicking the &quot;X&quot; in the upper-right corner, the main GUI is unaffected. Otherwise, if the &quot;OK&quot; button is clicked or </span><code>Enter</code><span> is pressed, the dialog closes, and the value to the right of &quot;Seed:&quot; on the menu bar is replaced by the value from the </span><strong><span>NumericUpDown</span></strong><span> in the dialog. </span></p><p><span>Much of the program code is provided, including all code for rendering graphics and code for getting a shuffled deck of cards. You will need to add code implementing the game logic, including dealing the cards, as described in </span><a href='#7-coding-requirements'><span>7. Coding Requirements</span></a><span> below. Several types have been defined for your use. All of this is described in detail in what follows.</span></p><h2 id='5-user-interface'><span>5. User Interface</span></h2><p><span>The </span><a href='https://youtu.be/F7fz-q6eQeA'><span>demo video</span></a><span> shows the desired behavior of your finished program. This behavior is summarized here.</span></p><p><span>The program should start by displaying the window shown by the provided code (see </span><a href='#4-starting-the-assignment'><span>4. Starting the Assignment</span></a><span> above). The user may change the value of the seed as described above.</span></p><p><span>Whenever the user clicks the &quot;New Game&quot; button, a new game should be dealt and displayed. If the value of the seed is nonnegative, the same game should be dealt whenever the seed has this value. If its value is -1, a random game should be dealt.</span></p><p><span>During game play, after a game is dealt, the user can do any of the actions listed under &quot;Rules&quot; above by making either one or two mouse clicks, depending on the action. For actions that require two clicks, the first click will select one or more cards, and the second will complete the action. Selected cards will be indicated on the GUI with a magenta box drawn around the cards. Specifically, the program should respond as follows to mouse clicks on various locations of the game board:</span></p><ul><li><span>If the stock is clicked when it is nonempty, cards are moved from the stock to the discard pile, as described under &quot;Rules&quot; above. If there was a selection at the time of the click, the selection is removed.</span></li><li><span>If the stock area is clicked when the stock is empty, cards are moved from the discard pile back to the stock, as described under &quot;Rules&quot; above. If there was a selection at the time of the click, the selection is removed.</span></li><li><span>If the top card in the discard pile is clicked when the discard pile is nonempty and there is no selection, this card is selected.</span></li><li><span>If a face-up card on a tableau column is clicked when there is no selection, this card and all cards shown on top of it are selected.</span></li><li><span>If a foundation, the top card on the discard pile, the top card on a tableau column, or an empty tableau column is clicked when a selection exists, the selected cards are moved on top of the clicked card/area, provided this move is legal as described under &quot;Rules&quot; above. If this move is illegal, no cards are moved. In either case, the selection is removed. (Note that clicking the top card on the discard pile when a selection exists, or clicking a foundation area when the number of selected cards is more than 1, always results in an illegal move.)</span></li><li><span>Any other clicks within the green game board area are ignored.</span></li></ul><p><span>If the user wins, as described under &quot;Rules&quot; above, a </span><strong><span>MessageBox</span></strong><span> containing the message, &quot;You win!&quot;, is displayed, and any subsequent clicks within the green game board area are ignored until the &quot;New Game&quot; button is clicked again.</span></p><h2 id='6-software-architecture'><span>6. Software Architecture</span></h2><p><span>The following class diagram shows the types defined in this program:</span></p><p><img src="ClassDiagram.png" alt="Class diagram for the program" style="zoom:50%;" /></p><p><span>Each box in the above diagram is a type defined in the program. All of these types have already been defined in the provided code, but the </span><strong><span>Game</span></strong><span> and </span><strong><span>TableauQueue</span></strong><span> classes are incomplete. These classes are the only code you will need to modify. The </span><strong><span>Game</span></strong><span> class is responsible for setting up a new game and controlling the game logic. The </span><strong><span>TableauQueue</span></strong><span> class implements a variation on a queue that allows the user to peek at either the front or the back. These queues will be used to store the face-up cards on each tableau column such that when the queue is nonempty, the card at the back of the queue is the uncovered card on the column. The other types are:</span></p><ul><li><span>The </span><strong><span>UserInterface</span></strong><span> class, which implements the main form. You will not need to use this class in your code.</span></li><li><span>The </span><strong><span>SeedDialog</span></strong><span> class, which implements the dialog for obtaining a new seed. You will not need to use this class in your code.</span></li><li><span>The </span><strong><span>CardPile</span></strong><span> class, which implements a graphical control for displaying the stock or a foundation pile.</span></li><li><span>The </span><strong><span>DiscardPile</span></strong><span> class, which implements a graphical control for displaying the discard pile.</span></li><li><span>The </span><strong><span>TableauColumn</span></strong><span> class, which implements a graphical control for displaying a tableau column.</span></li><li><span>The </span><strong><span>Suit</span></strong><span> enumeration, which provides identifiers for each of the four suits.</span></li><li><span>The </span><strong><span>Card</span></strong><span> class, which implements a single card.</span></li><li><span>The </span><strong><span>CardPainter</span></strong><span> class, which is a </span><strong><span>static</span></strong><span> class containing constants, properties, and methods used for drawing. You will not need to use this class in your code.</span></li></ul><p><span>Below, we will describe what you will need to use from each of the above types. First, however, we need to explain the meaning of the arrows in the above diagram.</span></p><p><span>Single-headed arrows from one type to another in the diagram indicate fields or properties defined within the type at the source of the arrow. The type of such a field or property is the type at the destination of the arrow. For example, </span><code>_selectedColumn</code><span> is a field within the </span><strong><span>Game</span></strong><span> class having type </span><strong><span>TableauColumn</span></strong><span>. Double-headed arrows are similar, but represent collections of the type at the destination of the arrow. For example, within the </span><strong><span>TableauQueue</span></strong><span> class, </span><strong><span>FaceDownPile</span></strong><span> is a collection of </span><strong><span>Card</span></strong><span>s. In this case, the collection is a stack, but some of the collections shown above are arrays or queues.</span></p><h3 id='61-the-suit-enumeration'><span>6.1. The Suit Enumeration</span></h3><p><span>This enumeration contains four members:</span></p><ul><li><strong><span>Suit.Clubs</span></strong></li><li><strong><span>Suit.Diamonds</span></strong></li><li><strong><span>Suit.Hearts</span></strong></li><li><strong><span>Suit.Spades</span></strong></li></ul><h3 id='62-the-card-class'><span>6.2. The Card Class</span></h3><p><span>You will need to use the following constants defined within this class:</span></p><ul><li><strong><span>MinRank</span></strong><span>: an </span><strong><span>int</span></strong><span> giving the minimum rank of any card (1).</span></li><li><strong><span>MaxRank</span></strong><span>: an </span><strong><span>int</span></strong><span> giving the maximum rank of any card (13).</span></li></ul><p><span>You will also need to use the following properties of a </span><strong><span>Card</span></strong><span>:</span></p><ul><li><strong><span>Rank:</span></strong><span> gets an </span><strong><span>int</span></strong><span> giving the rank of the card (see under &quot;Cards&quot; above).</span></li><li><strong><span>Suit:</span></strong><span> gets a </span><strong><span>Suit</span></strong><span> giving the suit of the card (see under &quot;Cards&quot; above).</span></li><li><strong><span>IsRed</span></strong><span>: gets a </span><strong><span>bool</span></strong><span> indicating whether the card is red (if not, it is black - see under &quot;Cards&quot; above).</span></li></ul><h3 id='63-the-cardpile-class'><span>6.3. The CardPile Class</span></h3><p><span>You will only need to use the </span><strong><span>Pile</span></strong><span> property of a </span><strong><span>CardPile</span></strong><span>. This property gets a </span><strong><span>Stack</span><span>&lt;</span><span>Card</span><span>&gt;</span></strong><span> giving the cards in the pile. The top of the stack is the top card on the pile.</span></p><h3 id='64-the-discardpile-class'><span>6.4. The DiscardPile Class</span></h3><p><span>You will need to use the following properties of a </span><strong><span>DiscardPile</span></strong><span>:</span></p><ul><li><strong><span>Pile:</span></strong><span> gets a </span><strong><span>Stack</span><span>&lt;</span><span>Card</span><span>&gt;</span></strong><span> giving the cards in the pile, where the top of the stack is the top card on the pile.</span></li><li><strong><span>IsSelected:</span></strong><span> gets or sets a </span><strong><span>bool</span></strong><span> indicating whether the top card on the pile is selected. If this property is </span><strong><span>true</span></strong><span>, the top card will be drawn with a magenta box around it. If it is assigned </span><strong><span>true</span></strong><span> when the </span><strong><span>Pile</span></strong><span> property is empty, it throws an </span><strong><span>InvalidOperationException</span></strong><span>.</span></li></ul><h3 id='65-the-tableaucolumn-class'><span>6.5. The TableauColumn Class</span></h3><p><span>You will need to use the following properties of a </span><strong><span>TableauColumn</span></strong><span>:</span></p><ul><li><strong><span>FaceDownPile:</span></strong><span> gets a </span><strong><span>Stack</span><span>&lt;</span><span>Card</span><span>&gt;</span></strong><span> giving the face-down cards in the column, where the top of the stack is the top face-down card on the pile.</span></li><li><strong><span>FaceUpPile:</span></strong><span> gets a </span><strong><span>TableauQueue</span></strong><span> giving the face-up cards in the column, where the back of the queue is the top face-up card on the column (i.e., the card that is uncovered).</span></li><li><strong><span>NumberSelected:</span></strong><span> get or sets an </span><strong><span>int</span></strong><span> giving the number of cards in the column that are selected. If this property is positive, a magenta box is drawn around this many face-up cards at the top of the column. If this property is assigned a negative value or a value greater than the number of face-up cards, it throws an </span><strong><span>ArgumentOutOfRangeException</span></strong><span>. (Note that this does not guarantee that this property will always be in range, as elements can be removed from </span><strong><span>FaceUpPile</span></strong><span> after a value is assigned to </span><strong><span>NumberSelected</span></strong><span>.)</span></li></ul><h2 id='7-coding-requirements'><span>7. Coding Requirements</span></h2><p><span>In what follows, we give specific requirements for your program code. Note that you do not need to use the names that are shown in the class diagram above for any </span><strong><span>private</span></strong><span> members, as long as you follow the </span><a href='https://cis300.cs.ksu.edu/appendix/style/naming/'><span>naming conventions</span></a><span> for this class. However, don&#39;t change the names of any </span><strong><span>public</span></strong><span> members. Note that some of the classes define various constants, using either </span><strong><span>const</span></strong><span> or </span><strong><span>static readonly</span></strong><span>. Use these constants in your code rather than their literal values.</span></p><h3 id='71-the-tableauqueue-class'><span>7.1. The TableauQueue Class</span></h3><p><span>The provided code for this class includes trivial code for the </span><strong><span>public</span></strong><span> property and the six </span><strong><span>public</span></strong><span> methods. The comments above each </span><strong><span>public</span></strong><span> member describe what they are to do. For most of them, you can simply call a member of the </span><strong><a href='https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.queue-1?view=net-6.0'><span>Queue</span></a><span>&lt;</span><span>Card</span><span>&gt;</span></strong><span> </span><code>_queue</code><span>. Two of the methods, however, require a bit more work:</span></p><ul><li><span>The </span><strong><span>Enqueue</span></strong><span> method, in addition to enqueueing the given </span><strong><span>Card</span></strong><span> onto the </span><strong><span>Queue</span><span>&lt;</span><span>Card</span><span>&gt;</span></strong><span>, needs to save this card in the </span><strong><span>Card</span></strong><span> field </span><code>_backCard</code><span>, which keeps track of the back card in the queue.</span></li><li><span>The </span><strong><span>PeekBack</span></strong><span> method first needs to determine whether the queue is empty, and if so, throw an </span><strong><span>InvalidOperationException</span></strong><span>. Otherwise, it should return the card at the back of the queue, which is stored in a </span><strong><span>private</span></strong><span> field.</span></li></ul><h3 id='72-the-game-class'><span>7.2. The Game Class</span></h3><p><span>First, you will need to add four </span><strong><span>private</span></strong><span> fields:</span></p><ul><li><span>A </span><strong><span>DiscardPile?</span></strong><span> and a </span><strong><span>TableauColumn?</span></strong><span> to keep track of the currently-selected discard pile or tableau column. A </span><strong><span>null</span></strong><span> value indicates that no discard pile or tableau column, respectively, is selected. Note that in order for any selection to be displayed properly, the appropriate properties of the discard pile and all tableau columns need to be set accordingly.</span></li><li><span>Two </span><strong><span>int</span></strong><span>s to keep track of the number of face-down tableau cards and the number of cards in the stock and discard pile together. Initialize these values using the provided constants </span><code>_initialHiddenCardCout</code><span> and </span><code>_initialStockCount</code><span>, respectively. These initial values represent the number of cards in the respective group after the cards are dealt.</span></li></ul><p><span>You will also need to add 14 </span><strong><span>private</span></strong><span> methods and complete the provided constructor and the four provided </span><strong><span>public</span></strong><span> methods. Each of these is discussed in what follows. We will divide the </span><strong><span>private</span></strong><span> methods into two groups. Methods in the first group will perform more fundamental tasks that are needed in more than one place. Methods in the second group will make the various moves of the game, including dealing the cards initially. The constructor will initialize a </span><strong><span>Game</span></strong><span> object to the beginning of a game. The </span><strong><span>public</span></strong><span> methods will implement the needed the functionality for the event handlers provided in the </span><strong><span>UserInterface</span></strong><span> class. </span></p><p><span>Unless otherwise indicated, you will not need to do any error-checking (such as checking that a variable is non-</span><strong><span>null</span></strong><span> or has a value in the proper range) on any of the parameters.</span></p><h4 id='721-low-level-methods'><span>7.2.1. Low-Level Methods</span></h4><p><span>The following methods each implement a low-level action that needs to be done in more than one place. You should use one of the first four of these methods whenever cards need to be moved from one stack or queue to another.</span></p><h5 id='7211-a-private-method-to-transfer-one-card-from-a-stack-to-a-tableauqueue'><span>7.2.1.1. A private method to transfer one card from a stack to a TableauQueue</span></h5><p><span>This method should take as its parameters a </span><strong><span>Stack</span><span>&lt;</span><span>Card</span><span>&gt;</span></strong><span> and a </span><strong><span>TableauQueue</span></strong><span>. It should return nothing. It should move one card from the top of the stack to the back of the queue.</span></p><h5 id='7212-a-private-method-to-transfer-one-card-from-a-tableauqueue-to-a-stack'><span>7.2.1.2. A private method to transfer one card from a TableauQueue to a stack</span></h5><p><span>Consider naming this method the same as the one above, as this might make these two methods easier to use. This method should take as its parameters a </span><strong><span>TableauQueue</span></strong><span> and a </span><strong><span>Stack</span><span>&lt;</span><span>Card</span><span>&gt;</span></strong><span>. It should return nothing. It should move one card from the front of the queue to the top of the stack. </span></p><h5 id='7213-a-private-method-to-transfer-cards-from-one-stack-to-another'><span>7.2.1.3. A private method to transfer cards from one stack to another</span></h5><p><span>This method should take as its parameters two </span><strong><span>Stack</span><span>&lt;</span><span>Card</span><span>&gt;</span></strong><span>s and an </span><strong><span>int</span></strong><span> giving the number of cards to move. It should return nothing. It should move the given number of cards, one at a time, from the top of the first stack to the top of the second stack. Thus, the last card removed from the first stack will end up at the top of the second stack. Note that because the third parameter can be 1, this method can be used even if only one card is being moved.</span></p><h5 id='7214-a-private-method-to-transfer-cards-from-one-tableauqueue-to-another'><span>7.2.1.4. A private method to transfer cards from one TableauQueue to another</span></h5><p><span>Consider naming this method the same as the one above. This method should take as its parameters two </span><strong><span>TableauQueues</span></strong><span> and an </span><strong><span>int</span></strong><span> giving the number of cards to move. It should return nothing. It should move the given number of cards, one at a time, from the front of the first queue to the back of the second. Note that if the same queue is used for both parameters, this will cause the cards to be moved from the front to the back of this queue, preserving the order of the cards moved.</span></p><h5 id='7215-a-private-method-to-remove-any-selection'><span>7.2.1.5. A private method to remove any selection</span></h5><p><span>This method needs no parameters and should return nothing. It needs to check each of the </span><strong><span>private</span></strong><span> fields that keep track of selected piles to see if they are non-</span><strong><span>null</span></strong><span>. If either is, update the appropriate property of the selected pile so that no cards are selected, then set the </span><strong><span>private</span></strong><span> field to </span><strong><span>null</span></strong><span>.</span></p><h5 id='7216-a-private-method-to-determine-whether-a-card-can-be-placed-on-a-tableau-column'><span>7.2.1.6. A private method to determine whether a card can be placed on a tableau column</span></h5><p><span>This method needs as its parameters a </span><strong><span>Card</span></strong><span> giving the card to be moved and a </span><strong><span>TableauQueue</span></strong><span> giving the pile of face-up tableau cards to which it is to be moved. It should return a </span><strong><span>bool</span></strong><span> indicating whether the given card can legally be placed on top of the card at the back of the queue. Make this determination according to the rules given in </span><a href='#3-rules'><span>3. Rules</span></a><span> above. It should </span><strong><span>not</span></strong><span> place the card on the pile. Be careful to handle the case in which the given queue is empty (you may assume it isn&#39;t </span><strong><span>null</span></strong><span>).</span></p><h5 id='7217-a-private-method-to-determine-whether-a-card-can-be-placed-on-a-foundation-pile'><span>7.2.1.7. A private method to determine whether a card can be placed on a foundation pile</span></h5><p><span>This method should take as its parameters a </span><strong><span>Card</span></strong><span> giving the card to be moved and a </span><strong><span>Stack</span><span>&lt;</span><span>Card</span><span>&gt;</span></strong><span> giving the foundation pile on which it is to be moved. It should return a </span><strong><span>bool</span></strong><span> indicating whether the given card can legally be placed on the given foundation pile, as described in </span><a href='#3-rules'><span>3. Rules</span></a><span> above. It should </span><strong><span>not</span></strong><span> place the card on the pile. Be sure to handle the case in which the foundation pile is empty.</span></p><h5 id='7218-a-private-method-to-determine-whether-the-game-has-been-won'><span>7.2.1.8. A private method to determine whether the game has been won</span></h5><p><span>This method should take no parameters. It should return a </span><strong><span>bool</span></strong><span> indicating whether the game has been won. Use the </span><strong><span>private int</span></strong><span> fields to make this determination as described in </span><a href='#3-rules'><span>3. Rules</span></a><span> above.</span></p><h5 id='7219-a-private-method-to-flip-a-tableau-column-card'><span>7.2.1.9. A private method to flip a tableau column card</span></h5><p><span>This method should take as its only parameter a </span><strong><span>TableauColumn</span></strong><span> giving the column to check. It should return nothing. It will need to determine whether the column has no face-up cards but at least one face-down card. If so, it will need to move the top face-down card to the face-up pile and update the appropriate </span><strong><span>int</span></strong><span> field.</span></p><h4 id='722-methods-to-make-game-moves'><span>7.2.2. Methods to Make Game Moves</span></h4><p><span>The following methods each implement either a play of the game or dealing the cards initially.</span></p><h5 id='7221-a-private-method-to-deal-the-cards'><span>7.2.2.1. A private method to deal the cards</span></h5><p><span>This method should take the following parameters:</span></p><ul><li><span>A </span><strong><span>Stack</span><span>&lt;</span><span>Card</span><span>&gt;</span></strong><span> giving the deck of cards.</span></li><li><span>A </span><strong><span>TableauColumn[</span>&nbsp;<span>]</span></strong><span> giving the tableau columns to which the cards will be dealt.</span></li></ul><p><span>It should deal the cards as described in </span><a href='#3-rules'><span>3. Rules</span></a><span> above. It is important to deal the cards in this order; otherwise, the game won&#39;t be the same as is shown in the </span><a href=''><span>demo video</span></a><span>. Use the appropriate methods above to move each card from one stack to another or to a </span><strong><span>TableauQueue</span></strong><span>.</span></p><h5 id='7222-a-private-method-to-move-a-card-from-the-discard-pile-to-a-tableau-column'><span>7.2.2.2. A private method to move a card from the discard pile to a tableau column</span></h5><p><span>This method should take as its parameters a </span><strong><span>Stack</span><span>&lt;</span><span>Card</span><span>&gt;</span></strong><span> giving the cards on the discard pile and a </span><strong><span>TableauQueue</span></strong><span> giving the tableau pile onto which the card is to be moved. It should return nothing. This method is responsible for moving the top card from the discard pile to the given tableau pile, provided this move is legal, as described in </span><a href='#3-rules'><span>3. Rules</span></a><span> above. You may assume that the discard pile is nonempty. Using the appropriate methods above, determine whether the move is legal, and if so, move the card and update the appropriate </span><strong><span>int</span></strong><span> field.</span></p><h5 id='7223-a-private-method-to-move-a-card-from-the-discard-pile-to-a-foundation-pile'><span>7.2.2.3. A private method to move a card from the discard pile to a foundation pile</span></h5><p><span>This method should take as its parameters a </span><strong><span>Stack</span><span>&lt;</span><span>Card</span><span>&gt;</span></strong><span> giving the cards on the discard pile and a </span><strong><span>Stack</span><span>&lt;</span><span>Card</span><span>&gt;</span></strong><span> giving the foundation pile onto which the card is to be moved. This method is responsible for moving the top card from the discard pile to the given foundation pile, provided this move is legal, as described in </span><a href='#3-rules'><span>3. Rules</span></a><span> above. You may assume the discard pile is nonempty.</span></p><h5 id='7224-a-private-method-to-move-the-selected-cards-from-one-tableau-column-to-another'><span>7.2.2.4. A private method to move the selected cards from one tableau column to another</span></h5><p><span>This method should take as its parameters a </span><strong><span>TableauColumn</span></strong><span> giving the column from which the cards are to be removed and a </span><strong><span>TableauQueue</span></strong><span> giving the tableau pile onto which the cards are to be placed. It should return nothing. You may assume that there is at least one card selected on the given tableau column. This method is responsible for moving those selected cards to the given tableau pile, provided the move is legal as described in </span><a href='#3-rules'><span>3. Rules</span></a><span> above.</span></p><p><span>First, using the appropriate method above, move the cards that are </span><strong><span>not</span></strong><span> selected on the given </span><strong><span>TableauColumn</span></strong><span> to the back of this column&#39;s queue (i.e., the cards are moved from the front of the queue to the back of the same queue). This will have the effect of bringing the first selected card to the front of the queue. Then, using the appropriate method above, determine whether the front card in this queue can legally be moved to the back of the given </span><strong><span>TableauQueue</span></strong><span>. If so, move the selected cards to this queue, and using the appropriate method above, flip a face-down card (if necessary) on the given column. Otherwise, restore the given </span><strong><span>TableauColumn</span></strong><span> to its original state by moving the selected cards to the back of this column&#39;s queue.</span></p><h5 id='7225-a-private-method-to-move-a-card-from-a-tableau-column-to-a-foundation-pile'><span>7.2.2.5. A private method to move a card from a tableau column to a foundation pile</span></h5><p><span>This method should take as its parameters a </span><strong><span>TableauColumn</span></strong><span> giving the column from which the card is to be removed and a </span><strong><span>Stack</span><span>&lt;</span><span>Card</span><span>&gt;</span></strong><span> giving the foundation pile onto which the card is to be placed. It should return nothing. This method is responsible for moving the back on the given column&#39;s queue card to the given foundation pile, provided the move is legal as described in </span><a href='#3-rules'><span>3. Rules</span></a><span> above. </span></p><p><span>First, using the appropriate method above, determine whether this move is legal. If so:</span></p><ul><li><span>Bring the back card in the </span><strong><span>TableauColumn</span></strong><span>&#39;s queue to the front by moving all other cards to the back.</span></li><li><span>Move the front card to the given stack.</span></li><li><span>Using the appropriate method above, flip a face-down card on the column (if necessary).</span></li></ul><h4 id='723-public-constructor-and-methods'><span>7.2.3. Public Constructor and Methods</span></h4><p><span>Stubs for these members are given in the provided code. You will need to </span><strong><span>replace</span></strong><span> any code provided inside the methods with code that will accomplish the given tasks; however, you should not change the method signatures (i.e., the return types, method names, or parameter lists). Be sure to use any appropriate </span><strong><span>private</span></strong><span> methods above. The </span><strong><span>public</span></strong><span> methods are defined so that the parameters describe which cards were chosen by the mouse click; hence, you will not need to deal with raw click locations. In most cases, however, you will need to determine whether the chosen cards represent a selection or the destination of a move.</span></p><h5 id='7231-the-constructor'><span>7.2.3.1. The constructor</span></h5><p><span>The constructor is responsible for initializing a </span><strong><span>Game</span></strong><span> object for a new game. You may assume that each of the GUI controls is properly initialized (i.e., all stacks are empty and there are no cards selected). You will need to do the following:</span></p><ul><li><span>Initialize the </span><a href='https://learn.microsoft.com/en-us/dotnet/api/system.random?view=net-6.0'><strong><span>Random</span></strong></a><span>. If the given seed is -1, it should be initialized using </span><a href='https://learn.microsoft.com/en-us/dotnet/api/system.random.-ctor?view=net-6.0#system-random-ctor'><span>its no-parameter constructor</span></a><span>. This will result in a random ordering of cards. Otherwise, use </span><a href='https://learn.microsoft.com/en-us/dotnet/api/system.random.-ctor?view=net-6.0#system-random-ctor(system-int32)'><span>its 1-parameter constructor</span></a><span>, passing it the given seed. This will allow the cards to be shuffled, but in the same order each time the same seed is used.</span></li><li><span>Shuffle a new deck using the provided </span><strong><span>ShuffleNewDeck</span></strong><span> method. Use as its parameter the stock pile so that the shuffled deck becomes the stock.</span></li><li><span>Deal the game using the appropriate method above.</span></li></ul><h5 id='7232-the-drawcardsfromstock-method'><span>7.2.3.2. The DrawCardsFromStock method</span></h5><p><span>This method will be called any time the stock (or stock area if the stock is empty) is clicked. Fill in the code to produce the behavior described in </span><a href='#5-user-interface'><span>5. User Interface</span></a><span> above. You might find the </span><a href='https://learn.microsoft.com/en-us/dotnet/api/system.math.min?view=net-6.0#system-math-min(system-int32-system-int32)'><strong><span>Math.Min</span></strong></a><span> method useful for determining the number of cards to flip.</span></p><h5 id='7233-the-selectdiscard-method'><span>7.2.3.3. The SelectDiscard method</span></h5><p><span>This method is called whenever the top card on the discard pile is clicked. Fill in the code to produce the behavior described in </span><a href='#5-user-interface'><span>5. User Interface</span></a><span> above. Note that if there is already a selection, the move is illegal.</span></p><h5 id='7234-the-selecttableaucards-method'><span>7.2.3.4. The SelectTableauCards method</span></h5><p><span>This method is called whenever either an empty tableau column or a face-up card on a tableau column is clicked. You may assume that </span><code>n</code><span> is 0 only when the tableau column is empty. Replace the provided code with code to produce the behavior described in </span><a href='#5-user-interface'><span>5. User Interface</span></a><span> above and to return whether the play wins the game. Note that you should only make a move when </span><code>n</code><span> is </span><em><span>at most</span></em><span> 1, but you should only make a selection when </span><code>n</code><span> is </span><em><span>at least</span></em><span> 1.</span></p><h5 id='7235-the-selectfoundationpile-method'><span>7.2.3.5. The SelectFoundationPile method</span></h5><p><span>This method is called whenever a foundation is clicked.  Replace the provided code with code to produce the behavior described in </span><a href='#5-user-interface'><span>5. User Interface</span></a><span> above and to return whether the play wins the game.</span></p><h2 id='8-testing-your-program'><span>8. Testing Your Program</span></h2><p><span>Unit tests have been provided to test both of the classes you are required to complete. You should also run the program to make sure it functions, but you don&#39;t need to check all of the game functionality - this will be done by the unit tests. </span></p><p><span>Before running the unit tests, in the Test Explorer, click on the &quot;Group By&quot; icon, and make sure &quot;Class&quot; is checked. Then uncheck any other items in the list, and finally, check &quot;Traits&quot;. This will cause the tests to be grouped first by class (which will correspond to the class being tested), then by traits (or categories). After doing this, click on the main window, and make sure that the arrow on the &quot;Test&quot; column is pointing upwards - if it isn&#39;t, click on &quot;Test&quot; to reverse its direction. This will cause the tests to be listed in the proper order so that working through them from top down will correct the more basic issues first.</span></p><p><span>When debugging a failed test, pay attention to all of the information in the Test Detail Summary window for that test. This should tell you what went wrong. Note that in </span><strong><span>BGameTests.cs</span></strong><span>, the contents of stacks and queues are usually converted to arrays before comparing them with other arrays. For stacks, the arrays will list the contents from top to bottom, and for queues, the arrays will list the contents from front to back. </span></p><p><span>You will usually then need to look at the unit test code and its comments to see exactly what was tested. To get to the unit test code, double-click the test in the Test Explorer. If a test throws an exception, it is usually useful to right-click on the test and select &quot;Debug&quot;. This will run the debugger on the test and break the program execution where the exception is thrown. Once all the unit tests for a class have passed, you can be reasonably confident of that class&#39;s correctness (although this isn&#39;t guaranteed).</span></p><p><span>For some of the tests in </span><strong><span>BGameTests.cs</span></strong><span>, it may be helpful to run the program so that you can see exactly what is being tested. Some of the tests, including </span><strong><span>TestSeed</span></strong><span>, which tests the dealing of the cards, use a seed of 0 to generate a game. This game should deal the cards as follows:</span></p><p><img src="seed-0-deal.png" alt="The initial game produced using a seed of 0." style="zoom:67%;" /></p><p><span>The contents of the stock and the face-down cards on the tableau columns can be found in the </span><strong><span>private</span></strong><span> fields, </span><code>_initialStock</code><span> and </span><code>_faceDownCards</code><span>, respectively.</span></p><h2 id='9-submitting-your-assignment'><span>9. Submitting Your Assignment</span></h2><p><span>Be sure to </span><strong><span>commit</span></strong><span> all your changes, then </span><strong><span>push</span></strong><span> your commits to your GitHub repository. Then submit the </span><em><span>entire URL</span></em><span> of the commit that you want graded. </span></p><p><strong><span>Important:</span></strong><span> We will only grade the source code that is included in the commit that you submit. Therefore, be sure that the commit on GitHub contains  </span><strong><span>Game.cs</span></strong><span> and </span><strong><span>TableauQueue.cs</span></strong><span> within the </span><strong><span>Ksu.Cis300.KlondikeSolitaire</span></strong><span> folder, and that it is the version you want graded. This is especially important if you had any trouble committing or pushing your code.</span></p></div></div>
+</body>
+</html>
