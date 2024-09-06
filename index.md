@@ -15,7 +15,7 @@ A company wants to distribute an implementation of the game, Klondike Solitaire.
 
 ## 2. Cards
 
-Klondike is a Solitaire game played with a standard deck of 52 cards. Each card in this is uniquely identified by its *rank*, an integer value from 1 to 13, and a *suit*, either "spades", "clubs", "hearts", or "diamonds". Cards with ranks 2 through 10 have that value, along with their suit, in the upper-left and lower-right corners. The other four ranks have special names, the first letter of which is shown in the upper-left and lower-right corners, along with their suit. These names are:
+Klondike is a Solitaire game played with a standard deck of 52 cards. Each card in this deck is uniquely identified by its *rank*, an integer value from 1 to 13, and a *suit*, either "spades", "clubs", "hearts", or "diamonds". Cards with ranks 2 through 10 have that value, along with their suit, in the upper-left and lower-right corners. The other four ranks have special names, the first letter of which is shown in the upper-left and lower-right corners, along with their suit. These names are:
 
 - Rank 1: "Ace"
 - Rank 11: "Jack"
@@ -39,7 +39,7 @@ The suits spades and clubs are black, and the suits hearts and diamonds are red.
 
 The cards are initially dealt into seven *tableau columns* by repeating the following until all tableau columns contain a face-up card:
 
-- Place the next card from the deck face up on top of the the leftmost tableau column that does not contain a face-up card.
+- Place the next card from the deck face up on top of the leftmost tableau column that does not contain a face-up card.
 - Place one card from the deck face down on each remaining tableau column that does not contain a face-up card, starting from the left.
 
 The remaining 24 cards in the deck form the *stock*. For example, the following figure illustrates how the cards might be dealt, where the stock is in the upper-left corner and the seven tableau columns are across the bottom:
@@ -70,7 +70,7 @@ Suppose that at some point, the following conditions both hold:
 
 In such a situation, it is always possible to reach the goal of moving all cards to the foundations. Therefore, in order to skip the tedium of moving the remaining cards to foundations, we will consider that the player has won if both of the above conditions hold.
 
-Play continues until the player either wins or gives up. A more detailed example is given in the [demo video]().
+Play continues until the player either wins or gives up. 
 
 ## 4. Starting the Assignment
 
@@ -94,7 +94,7 @@ Much of the program code is provided, including all code for rendering graphics 
 
 ## 5. User Interface
 
-The [demo video](https://youtu.be/F7fz-q6eQeA) shows the desired behavior of your finished program. This behavior is summarized here.
+The desired behavior of your finished program is summarized here. Some of this behavior is illustrated in the [demo video](https://youtu.be/at2VcEqD9f0), posted on the Canvas assignment.
 
 The program should start by displaying the window shown by the provided code (see [4. Starting the Assignment](#4. Starting the Assignment]) above). The user may change the value of the seed as described above.
 
@@ -130,7 +130,7 @@ Each box in the above diagram is a type defined in the program. All of these typ
 
 Below, we will describe what you will need to use from each of the above types. First, however, we need to explain the meaning of the arrows in the above diagram.
 
-Single-headed arrows from one type to another in the diagram indicate fields or properties defined within the type at the source of the arrow. The type of such a field or property is the type at the destination of the arrow. For example, `_selectedColumn` is a field within the **Game** class having type **TableauColumn**. Double-headed arrows are similar, but represent collections of the type at the destination of the arrow. For example, within the **TableauQueue** class, **FaceDownPile** is a collection of **Card**s. In this case, the collection is a stack, but some of the collections shown above are arrays or queues.
+Single-headed arrows from one type to another in the diagram indicate fields or properties defined within the type at the source of the arrow. The type of such a field or property is the type at the destination of the arrow. For example, `_selectedColumn` is a field within the **Game** class having type **TableauColumn**. Double-headed arrows are similar, but represent collections of the type at the destination of the arrow. For example, within the **TableauQueue** class, **FaceDownPile** is a property that gets a collection of **Card**s. In this case, the collection is a stack, but some of the collections shown above are arrays or queues.
 
 ### 6.1. The Suit Enumeration
 
@@ -150,9 +150,9 @@ You will need to use the following constants defined within this class:
 
 You will also need to use the following properties of a **Card**:
 
-- **Rank:** gets an **int** giving the rank of the card (see under "Cards" above).
-- **Suit:** gets a **Suit** giving the suit of the card (see under "Cards" above).
-- **IsRed**: gets a **bool** indicating whether the card is red (if not, it is black - see under "Cards" above).
+- **Rank:** gets an **int** giving the rank of the card (see  [2. Cards](#2. Cards) above).
+- **Suit:** gets a **Suit** giving the suit of the card (see [2. Cards](#2. Cards) above).
+- **IsRed**: gets a **bool** indicating whether the card is red (if not, it is black - see [2. Cards](#2. Cards) above).
 
 ### 6.3. The CardPile Class
 
@@ -175,11 +175,11 @@ You will need to use the following properties of a **TableauColumn**:
 
 ## 7. Coding Requirements
 
-In what follows, we give specific requirements for your program code. Note that you do not need to use the names that are shown in the class diagram above for any **private** members, as long as you follow the [naming conventions](https://cis300.cs.ksu.edu/appendix/style/naming/) for this class. However, don't change the names of any **public** members. Note that some of the classes define various constants, using either **const** or **static readonly**. Use these constants in your code rather than their literal values.
+In what follows, we give specific requirements for your program code. Note that you do not need to use the names that are shown in the class diagram above for any members hat you add, as long as you follow the [naming conventions](https://textbooks.cs.ksu.edu/cis300/appendix/style/naming/) for this class. However, don't change the names of any provided members. Note that some of the classes define various constants, using either **const** or **static readonly**. Use these constants in your code rather than their literal values.
 
 ### 7.1. The TableauQueue Class
 
-The provided code for this class includes trivial code for the **public** property and the six **public** methods. The comments above each **public** member describe what they are to do. For most of them, you can simply call a member of the **[Queue](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.queue-1?view=net-6.0)\<Card\>** `_queue`. Two of the methods, however, require a bit more work:
+The provided code for this class includes trivial code for the **public** property and the six **public** methods. You will need to complete each of these. The comments above each **public** member describe what they are to do. For most of them, you can simply call a member of the **[Queue](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.queue-1?view=net-6.0)\<Card\>** `_queue`. Two of the methods, however, require a bit more work:
 
 - The **Enqueue** method, in addition to enqueueing the given **Card** onto the **Queue\<Card\>**, needs to save this card in the **Card** field `_backCard`, which keeps track of the back card in the queue.
 - The **PeekBack** method first needs to determine whether the queue is empty, and if so, throw an **InvalidOperationException**. Otherwise, it should return the card at the back of the queue, which is stored in a **private** field.
@@ -191,7 +191,7 @@ First, you will need to add four **private** fields:
 - A **DiscardPile?** and a **TableauColumn?** to keep track of the currently-selected discard pile or tableau column. A **null** value indicates that no discard pile or tableau column, respectively, is selected. Note that in order for any selection to be displayed properly, the appropriate properties of the discard pile and all tableau columns need to be set accordingly.
 - Two **int**s to keep track of the number of face-down tableau cards and the number of cards in the stock and discard pile together. Initialize these values using the provided constants `_initialHiddenCardCout` and `_initialStockCount`, respectively. These initial values represent the number of cards in the respective group after the cards are dealt.
 
-You will also need to add 14 **private** methods and complete the provided constructor and the four provided **public** methods. Each of these is discussed in what follows. We will divide the **private** methods into two groups. Methods in the first group will perform more fundamental tasks that are needed in more than one place. Methods in the second group will make the various moves of the game, including dealing the cards initially. The constructor will initialize a **Game** object to the beginning of a game. The **public** methods will implement the needed the functionality for the event handlers provided in the **UserInterface** class. 
+You will also need to add 14 **private** methods and complete the provided constructor and the four provided **public** methods. Each of these is discussed in what follows. We will divide the **private** methods into two groups. Methods in the first group will perform more fundamental tasks that are needed in more than one place. Methods in the second group will make the various moves of the game, including dealing the cards initially. The constructor will initialize a **Game** object to the beginning of a game. The **public** methods will implement the needed functionality for the event handlers provided in the **UserInterface** class. 
 
 Unless otherwise indicated, you will not need to do any error-checking (such as checking that a variable is non-**null** or has a value in the proper range) on any of the parameters.
 
@@ -213,7 +213,7 @@ This method should take as its parameters two **Stack\<Card\>**s and an **int** 
 
 ##### 7.2.1.4. A private method to transfer cards from one TableauQueue to another
 
-Consider naming this method the same as the one above. This method should take as its parameters two **TableauQueues** and an **int** giving the number of cards to move. It should return nothing. It should move the given number of cards, one at a time, from the front of the first queue to the back of the second. Note that if the same queue is used for both parameters, this will cause the cards to be moved from the front to the back of this queue, preserving the order of the cards moved.
+Consider naming this method the same as the one above. This method should take as its parameters two **TableauQueues** and an **int** giving the number of cards to move. It should return nothing. It should move the given number of cards, one at a time, from the front of the first queue to the back of the second. Note that if the same queue is used for both queue parameters, this will cause the cards to be moved from the front to the back of this queue, preserving the order of the cards moved.
 
 ##### 7.2.1.5. A private method to remove any selection
 
@@ -233,7 +233,7 @@ This method should take no parameters. It should return a **bool** indicating wh
 
 ##### 7.2.1.9. A private method to flip a tableau column card
 
-This method should take as its only parameter a **TableauColumn** giving the column to check. It should return nothing. It will need to determine whether the column has no face-up cards but at least one face-down card. If so, it will need to move the top face-down card to the face-up pile and update the appropriate **int** field.
+This method should take as its only parameter a **TableauColumn** giving the column to check. It should return nothing. It will need to determine whether the column has no face-up cards but at least one face-down card. If so, it will need to move the top face-down card to the face-up pile and update the field keeping track of the number of face-down tableau cards.
 
 #### 7.2.2. Methods to Make Game Moves
 
@@ -246,7 +246,7 @@ This method should take the following parameters:
 - A **Stack\<Card\>** giving the deck of cards.
 - A **TableauColumn[&nbsp;]** giving the tableau columns to which the cards will be dealt.
 
-It should deal the cards as described in [3. Rules](#3. Rules) above. It is important to deal the cards in this order; otherwise, the game won't be the same as is shown in the [demo video](). Use the appropriate methods above to move each card from one stack to another or to a **TableauQueue**.
+It should deal the cards as described in [3. Rules](#3. Rules) above. It is important to deal the cards in this order; otherwise, the game won't be the same as is shown in the [demo video](https://youtu.be/at2VcEqD9f0) or as is used in the unit test code. Use the appropriate methods above to move each card from one stack to another or to a **TableauQueue**.
 
 ##### 7.2.2.2. A private method to move a card from the discard pile to a tableau column
 
@@ -264,7 +264,7 @@ First, using the appropriate method above, move the cards that are **not** selec
 
 ##### 7.2.2.5. A private method to move a card from a tableau column to a foundation pile
 
-This method should take as its parameters a **TableauColumn** giving the column from which the card is to be removed and a **Stack\<Card\>** giving the foundation pile onto which the card is to be placed. It should return nothing. This method is responsible for moving the back on the given column's queue card to the given foundation pile, provided the move is legal as described in [3. Rules](#3. Rules) above. 
+This method should take as its parameters a **TableauColumn** giving the column from which the card is to be removed and a **Stack\<Card\>** giving the foundation pile onto which the card is to be placed. It should return nothing. This method is responsible for moving the back card on the given column's queue to the given foundation pile, provided the move is legal as described in [3. Rules](#3. Rules) above. 
 
 First, using the appropriate method above, determine whether this move is legal. If so:
 
@@ -306,9 +306,9 @@ Unit tests have been provided to test both of the classes you are required to co
 
 Before running the unit tests, in the Test Explorer, click on the "Group By" icon, and make sure "Class" is checked. Then uncheck any other items in the list, and finally, check "Traits". This will cause the tests to be grouped first by class (which will correspond to the class being tested), then by traits (or categories). After doing this, click on the main window, and make sure that the arrow on the "Test" column is pointing upwards - if it isn't, click on "Test" to reverse its direction. This will cause the tests to be listed in the proper order so that working through them from top down will correct the more basic issues first.
 
-When debugging a failed test, pay attention to all of the information in the Test Detail Summary window for that test. This should tell you what went wrong. Note that in **BGameTests.cs**, the contents of stacks and queues are usually converted to arrays before comparing them with other arrays. For stacks, the arrays will list the contents from top to bottom, and for queues, the arrays will list the contents from front to back. 
+When debugging a failed test, pay attention to all of the information in the Test Detail Summary window for that test. This should tell you what went wrong. Note that in **BGameTests.cs**, the contents of stacks and queues are usually converted to arrays before comparing them with other arrays. For stacks, the arrays will list the contents from top to bottom, and for queues, the arrays will list the contents from front to back. Some of the test methods in **BGameTests.cs** are quite long. To help you to find which assertion failed, each tests has a unique message that appears in the Test Detail Summary - this message is given as the third parameter to the **Assert.That** method that failed. Also, the first line number given in the Stack Trace should be close to the failed assertion.
 
-You will usually then need to look at the unit test code and its comments to see exactly what was tested. To get to the unit test code, double-click the test in the Test Explorer. If a test throws an exception, it is usually useful to right-click on the test and select "Debug". This will run the debugger on the test and break the program execution where the exception is thrown. Once all the unit tests for a class have passed, you can be reasonably confident of that class's correctness (although this isn't guaranteed).
+You will usually need to look at the unit test code and its comments to see exactly what was tested. To get to the unit test code, double-click the test in the Test Explorer. If a test throws an exception, it is usually useful to right-click on the test and select "Debug". This will run the debugger on the test and break the program execution where the exception is thrown. Once all the unit tests for a class have passed, you can be reasonably confident of that class's correctness (although this isn't guaranteed).
 
 For some of the tests in **BGameTests.cs**, it may be helpful to run the program so that you can see exactly what is being tested. Some of the tests, including **TestSeed**, which tests the dealing of the cards, use a seed of 0 to generate a game. This game should deal the cards as follows:
 
@@ -319,5 +319,7 @@ The contents of the stock and the face-down cards on the tableau columns can be 
 ## 9. Submitting Your Assignment
 
 Be sure to **commit** all your changes, then **push** your commits to your GitHub repository. Then submit the *entire URL* of the commit that you want graded. 
+
+The repositories for the homework assignments for this class are set up to use GitHub's autograding feature to track push times. No actual testing/grading is done, but after each push, the GitHub page for the repository will show a green check mark on the line indicating the latest commit. Clicking that check mark will display a popup indicating that all checks have passed, regardless of whether your program works. You may also get an email indicating that all checks have passed. The only purpose for using the autograding feature in this way is to give us a backup indication of your push times in case you submitted your assignment incorrectly.
 
 **Important:** We will only grade the source code that is included in the commit that you submit. Therefore, be sure that the commit on GitHub contains  **Game.cs** and **TableauQueue.cs** within the **Ksu.Cis300.KlondikeSolitaire** folder, and that it is the version you want graded. This is especially important if you had any trouble committing or pushing your code.
